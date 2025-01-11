@@ -1,8 +1,10 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../database");
 
-const User = sequelize.define(
-  "User",
+
+
+const Product = sequelize.define(
+  "product",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,20 +16,26 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+    description: {
+      type: DataTypes.TEXT,
     },
-    password: {
-      // Add this line to the User model
-      type: DataTypes.STRING,
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    image_url: {
+      type: DataTypes.STRING,
     },
   },
   {
-    timestamps: true, // Automatically manage 'createdAt' and 'updatedAt'
+    timestamps: true,
   }
 );
 
-module.exports = { User };
+console.log(Product);
+
+module.exports = { Product };
